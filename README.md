@@ -24,7 +24,7 @@ images/            All site images (placeholders — see below)
 | File path | What goes here |
 |---|---|
 | `images/logo/logo.jpg` | Real logo (already in place) |
-| `images/hero/placeholder-hero.svg` | Home page hero photo |
+| `images/hero/hero.jpg` | Real hero photo (already in place) |
 | `images/mags/style-a/base.svg` | Photo of "Style A" mag before coating |
 | `images/mags/style-a/lemon-yellow.jpg` | Real photo — Style A coated in Lemon Yellow |
 | `images/mags/style-a/fluorescent-pink.jpg` | Real photo — Style A coated in Fluorescent Pink |

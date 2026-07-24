@@ -15,4 +15,49 @@ document.addEventListener("DOMContentLoaded", function () {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  var prefersMotion = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+  var revealEls = document.querySelectorAll(".reveal, .reveal-zoom");
+
+  if (prefersMotion && "IntersectionObserver" in window && revealEls.length) {
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    );
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
+  if (prefersMotion) {
+    var parallaxEl = document.querySelector(".hero-parallax");
+    if (parallaxEl) {
+      var ticking = false;
+      window.addEventListener(
+        "scroll",
+        function () {
+          if (!ticking) {
+            window.requestAnimationFrame(function () {
+              var offset = Math.min(window.scrollY * 0.15, 50);
+              parallaxEl.style.transform = "translateY(" + offset + "px)";
+              ticking = false;
+            });
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+  }
 });

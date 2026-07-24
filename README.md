@@ -19,18 +19,18 @@ images/            All site images (placeholders — see below)
 
 ## Replacing Placeholder Images
 
-`images/logo/logo.jpg` is the real shop logo. `images/mags/style-a/lemon-yellow.jpg` and `fluorescent-pink.jpg` are real product photos. Everything else in `images/` is still a placeholder SVG labeled "PLACEHOLDER" so it's obvious nothing there is a real photo yet. To go live, just overwrite each file at its existing path with a real photo **using the same filename** — no HTML or JS changes are needed.
+`images/logo/logo.jpg` is the real shop logo, `images/hero/hero.jpg` is a real hero photo, `images/gallery/gallery-1.jpg` … `gallery-5.jpg` are real completed-project photos, and `images/mags/style-a/lemon-yellow.jpg` and `fluorescent-pink.jpg` are real product photos. Everything else in `images/` is still a placeholder SVG labeled "PLACEHOLDER" so it's obvious nothing there is a real photo yet. To go live, just overwrite each file at its existing path with a real photo **using the same filename** — no HTML or JS changes are needed.
 
 | File path | What goes here |
 |---|---|
 | `images/logo/logo.jpg` | Real logo (already in place) |
 | `images/hero/hero.jpg` | Real hero photo (already in place) |
+| `images/gallery/gallery-1.jpg` … `gallery-5.jpg` | Real completed-project photos (already in place) — add more by adding new `<img>` tags in `gallery.html` |
 | `images/mags/style-a/base.svg` | Photo of "Style A" mag before coating |
 | `images/mags/style-a/lemon-yellow.jpg` | Real photo — Style A coated in Lemon Yellow |
 | `images/mags/style-a/fluorescent-pink.jpg` | Real photo — Style A coated in Fluorescent Pink |
 | `images/mags/style-a/*.svg` | Remaining colors for Style A, still placeholders |
 | `images/mags/style-b/*.svg` | Same pattern for a second mag style ("Deep Dish"), still placeholders |
-| `images/gallery/placeholder-1.svg` … `placeholder-6.svg` | General gallery/portfolio shots |
 
 If real photos are `.jpg`/`.png` instead of `.svg`, either convert them to those filenames, or update the matching path in `js/color-preview.js` (for mag photos) or the `<img src>` in the relevant HTML file (for logo/hero/gallery). `js/color-preview.js` has a per-color `overrides` object on the `style-a` entry showing exactly how a placeholder `.svg` path gets swapped for a real `.jpg` — copy that pattern for each new real photo.
 

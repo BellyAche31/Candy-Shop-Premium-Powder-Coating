@@ -19,13 +19,13 @@ images/            All site images (placeholders — see below)
 
 ## Replacing Placeholder Images
 
-`images/logo/logo.jpg` is the real shop logo, `images/hero/hero.jpg` is a real hero photo, `images/gallery/gallery-1.jpg` … `gallery-5.jpg` are real completed-project photos, and `images/mags/style-a/lemon-yellow.jpg` and `fluorescent-pink.jpg` are real product photos. Everything else in `images/` is still a placeholder SVG labeled "PLACEHOLDER" so it's obvious nothing there is a real photo yet. To go live, just overwrite each file at its existing path with a real photo **using the same filename** — no HTML or JS changes are needed.
+`images/logo/logo.jpg` is the real shop logo, `images/hero/hero.jpg` is a real hero photo, `images/gallery/gallery-1.jpg` … `gallery-8.jpg` are real completed-project photos, and `images/mags/style-a/lemon-yellow.jpg` and `fluorescent-pink.jpg` are real product photos. Everything else in `images/` is still a placeholder SVG labeled "PLACEHOLDER" so it's obvious nothing there is a real photo yet. To go live, just overwrite each file at its existing path with a real photo **using the same filename** — no HTML or JS changes are needed.
 
 | File path | What goes here |
 |---|---|
 | `images/logo/logo.jpg` | Real logo (already in place) |
 | `images/hero/hero.jpg` | Real hero photo (already in place) |
-| `images/gallery/gallery-1.jpg` … `gallery-5.jpg` | Real completed-project photos (already in place) — add more by adding new `<img>` tags in `gallery.html` |
+| `images/gallery/gallery-1.jpg` … `gallery-8.jpg` | Real completed-project photos (already in place) — add more by adding new `<img>` tags in `gallery.html` |
 | `images/mags/style-a/base.svg` | Photo of "Style A" mag before coating |
 | `images/mags/style-a/lemon-yellow.jpg` | Real photo — Style A coated in Lemon Yellow |
 | `images/mags/style-a/fluorescent-pink.jpg` | Real photo — Style A coated in Fluorescent Pink |

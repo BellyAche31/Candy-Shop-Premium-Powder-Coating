@@ -21,13 +21,15 @@ const AVAILABLE_COLORS = [
   { id: "titanium-black-silver", label: "Titanium Black Silver", swatchHex: "#3A3D40" }
 ];
 
-function buildColorsForStyle(styleSlug) {
+function buildColorsForStyle(styleSlug, overrides) {
+  overrides = overrides || {};
   var colors = {};
   AVAILABLE_COLORS.forEach(function (color) {
+    var filename = overrides[color.id] || (color.id + ".svg");
     colors[color.id] = {
       label: color.label,
       swatchHex: color.swatchHex,
-      image: "images/mags/" + styleSlug + "/" + color.id + ".svg"
+      image: "images/mags/" + styleSlug + "/" + filename
     };
   });
   return colors;
@@ -37,7 +39,10 @@ const MAG_COLOR_MAP = {
   "style-a": {
     label: "Style A — 5-Spoke Sport",
     baseImage: "images/mags/style-a/base.svg",
-    colors: buildColorsForStyle("style-a")
+    colors: buildColorsForStyle("style-a", {
+      "lemon-yellow": "lemon-yellow.jpg",
+      "fluorescent-pink": "fluorescent-pink.jpg"
+    })
   },
   "style-b": {
     label: "Style B — Deep Dish",

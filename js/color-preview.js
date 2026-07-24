@@ -4,24 +4,45 @@
 // the "image"/"baseImage" string below), keeping the same style/color keys.
 // To add a new mag style or color, add another entry following the same shape.
 
+// Shared color list — used to build each style's `colors` map below.
+// To add a new color: add it here, then add matching image files at
+// images/mags/<style>/<colorId>.svg for every mag style.
+const AVAILABLE_COLORS = [
+  { id: "fluorescent-pink", label: "Fluorescent Pink", swatchHex: "#FF2FA0" },
+  { id: "lemon-yellow", label: "Lemon Yellow", swatchHex: "#FCEE21" },
+  { id: "hi-gloss-white", label: "Hi Gloss White", swatchHex: "#FFFFFF" },
+  { id: "fire-red", label: "Fire Red", swatchHex: "#E1261C" },
+  { id: "prismatic-blue", label: "Prismatic Blue", swatchHex: "#1477D6" },
+  { id: "chameleon-green", label: "Chameleon Green", swatchHex: "#1FA37A" },
+  { id: "shocker-violet", label: "Shocker Violet", swatchHex: "#7B2FBE" },
+  { id: "chrome", label: "Chrome", swatchHex: "#C7C9CC" },
+  { id: "shocker-goblin", label: "Shocker Goblin", swatchHex: "#6FBE2C" },
+  { id: "shocker-red", label: "Shocker Red", swatchHex: "#FF1E1E" },
+  { id: "titanium-black-silver", label: "Titanium Black Silver", swatchHex: "#3A3D40" }
+];
+
+function buildColorsForStyle(styleSlug) {
+  var colors = {};
+  AVAILABLE_COLORS.forEach(function (color) {
+    colors[color.id] = {
+      label: color.label,
+      swatchHex: color.swatchHex,
+      image: "images/mags/" + styleSlug + "/" + color.id + ".svg"
+    };
+  });
+  return colors;
+}
+
 const MAG_COLOR_MAP = {
   "style-a": {
     label: "Style A — 5-Spoke Sport",
     baseImage: "images/mags/style-a/base.svg",
-    colors: {
-      "candy-red": { label: "Candy Red", swatchHex: "#B0102A", image: "images/mags/style-a/candy-red.svg" },
-      "candy-blue": { label: "Candy Blue", swatchHex: "#0A3FA0", image: "images/mags/style-a/candy-blue.svg" },
-      "gloss-black": { label: "Gloss Black", swatchHex: "#111111", image: "images/mags/style-a/gloss-black.svg" }
-    }
+    colors: buildColorsForStyle("style-a")
   },
   "style-b": {
     label: "Style B — Deep Dish",
     baseImage: "images/mags/style-b/base.svg",
-    colors: {
-      "candy-red": { label: "Candy Red", swatchHex: "#B0102A", image: "images/mags/style-b/candy-red.svg" },
-      "candy-blue": { label: "Candy Blue", swatchHex: "#0A3FA0", image: "images/mags/style-b/candy-blue.svg" },
-      "gloss-black": { label: "Gloss Black", swatchHex: "#111111", image: "images/mags/style-b/gloss-black.svg" }
-    }
+    colors: buildColorsForStyle("style-b")
   }
 };
 

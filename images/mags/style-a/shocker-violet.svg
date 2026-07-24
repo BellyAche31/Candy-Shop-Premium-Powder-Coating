@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="STYLE B — DEEP DISH CANDY BLUE placeholder photo">
-  <rect width="480" height="360" fill="#2f2f2f"/>
-  <circle cx="240" cy="160" r="110" fill="#0A3FA0" stroke="#ffffff" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="STYLE A — 5-SPOKE SPORT Shocker Violet placeholder photo">
+  <rect width="480" height="360" fill="#3a3a3a"/>
+  <circle cx="240" cy="160" r="110" fill="#7B2FBE" stroke="#ffffff" stroke-width="4"/>
   <circle cx="240" cy="160" r="80" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
   <circle cx="240" cy="160" r="34" fill="#1a1a1a" stroke="#ffffff" stroke-width="3"/>
   <g stroke="#ffffff" stroke-width="3" opacity="0.7">
@@ -14,6 +14,6 @@
     <line x1="183" y1="217" x2="212" y2="188" />
   </g>
   <rect x="0" y="300" width="480" height="60" fill="#000000" opacity="0.55"/>
-  <text x="240" y="326" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">STYLE B — DEEP DISH</text>
-  <text x="240" y="348" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#cccccc">CANDY BLUE — PLACEHOLDER PHOTO</text>
+  <text x="240" y="326" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">STYLE A — 5-SPOKE SPORT</text>
+  <text x="240" y="348" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#cccccc">Shocker Violet — PLACEHOLDER PHOTO</text>
 </svg>

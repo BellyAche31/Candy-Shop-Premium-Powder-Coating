@@ -263,6 +263,23 @@ p {
   color: var(--color-text);
 }
 
+.card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(176, 16, 42, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+}
+
+.card-icon {
+  width: 26px;
+  height: 26px;
+}
+
 /* ---------- Gallery grid ---------- */
 
 .gallery-grid {

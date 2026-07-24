@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote | Candy Shop Premium Powder Coating</title>
+  <meta name="description" content="Request a free quote or book a drop-off for your motorcycle mag powder coating project.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo-link" href="index.html">
+        <img src="images/logo/placeholder-logo.svg" alt="Candy Shop Premium Powder Coating logo">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="is-current">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="border-bottom:none;">
+      <div class="container">
+        <div class="section-header">
+          <h1>Request a Free Quote</h1>
+          <p>Tell us about your mags and we'll get back to you with pricing and drop-off scheduling. No obligation.</p>
+        </div>
+
+        <!--
+          TODO (manual step): replace YOUR_FORM_ID below with the real endpoint
+          from a free Formspree account (https://formspree.io). Create a form
+          there, copy its ID, and paste it into the action URL. Until then this
+          form will not deliver submissions anywhere.
+        -->
+        <form class="form-grid" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="New Quote Request — Candy Shop Powder Coating">
+
+          <!-- Honeypot spam trap: real users never fill this in -->
+          <div class="honeypot-field" aria-hidden="true">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-row-2">
+            <div>
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div>
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div>
+              <label for="mag-count">Number of Mags/Wheels</label>
+              <input type="number" id="mag-count" name="mag_count" min="1" step="1">
+            </div>
+          </div>
+
+          <div>
+            <label for="mag-style">Mag Style / Brand & Size</label>
+            <input type="text" id="mag-style" name="mag_style" placeholder="e.g. 5-spoke sport, 17 inch">
+          </div>
+
+          <div>
+            <label for="desired-color">Desired Color</label>
+            <select id="desired-color" name="desired_color">
+              <option value="">Select a color (optional)</option>
+              <option value="candy-red">Candy Red</option>
+              <option value="candy-blue">Candy Blue</option>
+              <option value="gloss-black">Gloss Black</option>
+              <option value="custom">Custom / Not Sure Yet</option>
+            </select>
+            <p class="field-hint">Not sure? Try our <a href="gallery.html">color preview tool</a> first.</p>
+          </div>
+
+          <div>
+            <label for="dropoff-date">Preferred Drop-off Date</label>
+            <input type="date" id="dropoff-date" name="dropoff_date">
+          </div>
+
+          <div>
+            <label for="message">Additional Details</label>
+            <textarea id="message" name="message" placeholder="Anything else we should know?"></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Send Quote Request</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span data-current-year></span> Candy Shop Premium Powder Coating. All rights reserved.</p>
+      <p><a href="contact.html">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

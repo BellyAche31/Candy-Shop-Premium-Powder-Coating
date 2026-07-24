@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80" role="img" aria-label="Candy Shop Premium Powder Coating logo placeholder">
+  <rect width="320" height="80" rx="8" fill="#111111"/>
+  <circle cx="40" cy="40" r="24" fill="#B0102A" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="40" cy="40" r="9" fill="#111111" stroke="#ffffff" stroke-width="2"/>
+  <text x="76" y="35" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">CANDY SHOP</text>
+  <text x="76" y="55" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#B0102A">PREMIUM POWDER COATING</text>
+</svg>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery & Color Preview | Candy Shop Premium Powder Coating</title>
+  <meta name="description" content="Browse our past work and preview your motorcycle mags in custom candy colors before you book.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo-link" href="index.html">
+        <img src="images/logo/placeholder-logo.svg" alt="Candy Shop Premium Powder Coating logo">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="gallery.html" class="is-current">Gallery</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="border-bottom:none; padding-bottom: 1rem;">
+      <div class="container section-header">
+        <h1>Color Preview Tool</h1>
+        <p>Pick a mag style, then tap a color swatch to see it transform. This shows a representative finish — every job is custom-mixed to match your bike.</p>
+      </div>
+    </section>
+
+    <section class="color-preview" id="color-preview">
+      <div class="container">
+        <div class="mag-style-select"></div>
+
+        <div class="preview-wrap">
+          <div class="preview-stage">
+            <img class="preview-img preview-img--base" src="" alt="">
+            <img class="preview-img preview-img--color" src="" alt="">
+          </div>
+          <p class="preview-label"></p>
+          <div class="swatch-row"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="border-bottom:none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Past Work</h2>
+          <p>A look at finished mags from our shop.</p>
+        </div>
+        <div class="gallery-grid">
+          <img src="images/gallery/placeholder-1.svg" alt="Placeholder gallery photo 1 of finished mag">
+          <img src="images/gallery/placeholder-2.svg" alt="Placeholder gallery photo 2 of finished mag">
+          <img src="images/gallery/placeholder-3.svg" alt="Placeholder gallery photo 3 of finished mag">
+          <img src="images/gallery/placeholder-4.svg" alt="Placeholder gallery photo 4 of finished mag">
+          <img src="images/gallery/placeholder-5.svg" alt="Placeholder gallery photo 5 of finished mag">
+          <img src="images/gallery/placeholder-6.svg" alt="Placeholder gallery photo 6 of finished mag">
+        </div>
+        <div class="text-center mt-2">
+          <a class="btn btn-primary" href="contact.html">Love a Color? Request a Quote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span data-current-year></span> Candy Shop Premium Powder Coating. All rights reserved.</p>
+      <p><a href="contact.html">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/color-preview.js"></script>
+</body>
+</html>

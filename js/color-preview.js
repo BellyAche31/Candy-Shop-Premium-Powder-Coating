@@ -1,0 +1,136 @@
+// Color-preview tool: mag style -> color -> photo, with a crossfade transition.
+//
+// To swap in real photos later: replace the file at the same path (or edit
+// the "image"/"baseImage" string below), keeping the same style/color keys.
+// To add a new mag style or color, add another entry following the same shape.
+
+const MAG_COLOR_MAP = {
+  "style-a": {
+    label: "Style A — 5-Spoke Sport",
+    baseImage: "images/mags/style-a/base.svg",
+    colors: {
+      "candy-red": { label: "Candy Red", swatchHex: "#B0102A", image: "images/mags/style-a/candy-red.svg" },
+      "candy-blue": { label: "Candy Blue", swatchHex: "#0A3FA0", image: "images/mags/style-a/candy-blue.svg" },
+      "gloss-black": { label: "Gloss Black", swatchHex: "#111111", image: "images/mags/style-a/gloss-black.svg" }
+    }
+  },
+  "style-b": {
+    label: "Style B — Deep Dish",
+    baseImage: "images/mags/style-b/base.svg",
+    colors: {
+      "candy-red": { label: "Candy Red", swatchHex: "#B0102A", image: "images/mags/style-b/candy-red.svg" },
+      "candy-blue": { label: "Candy Blue", swatchHex: "#0A3FA0", image: "images/mags/style-b/candy-blue.svg" },
+      "gloss-black": { label: "Gloss Black", swatchHex: "#111111", image: "images/mags/style-b/gloss-black.svg" }
+    }
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  var stylePicker = document.querySelector(".mag-style-select");
+  var swatchRow = document.querySelector(".swatch-row");
+  var baseImg = document.querySelector(".preview-img--base");
+  var colorImg = document.querySelector(".preview-img--color");
+  var previewLabel = document.querySelector(".preview-label");
+
+  if (!stylePicker || !swatchRow || !baseImg || !colorImg) {
+    return;
+  }
+
+  var currentStyleKey = Object.keys(MAG_COLOR_MAP)[0];
+
+  // Preload every mapped image so the first crossfade isn't janky.
+  Object.keys(MAG_COLOR_MAP).forEach(function (styleKey) {
+    var style = MAG_COLOR_MAP[styleKey];
+    new Image().src = style.baseImage;
+    Object.keys(style.colors).forEach(function (colorKey) {
+      new Image().src = style.colors[colorKey].image;
+    });
+  });
+
+  function renderStylePicker() {
+    stylePicker.innerHTML = "";
+    Object.keys(MAG_COLOR_MAP).forEach(function (styleKey) {
+      var style = MAG_COLOR_MAP[styleKey];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "style-btn" + (styleKey === currentStyleKey ? " is-selected" : "");
+      btn.textContent = style.label;
+      btn.setAttribute("data-style", styleKey);
+      btn.addEventListener("click", function () {
+        currentStyleKey = styleKey;
+        renderStylePicker();
+        renderSwatches();
+        resetToBase();
+      });
+      stylePicker.appendChild(btn);
+    });
+  }
+
+  function renderSwatches() {
+    var style = MAG_COLOR_MAP[currentStyleKey];
+    swatchRow.innerHTML = "";
+    Object.keys(style.colors).forEach(function (colorKey) {
+      var color = style.colors[colorKey];
+
+      var item = document.createElement("div");
+      item.className = "swatch-item";
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "swatch";
+      btn.style.background = color.swatchHex;
+      btn.setAttribute("data-color", colorKey);
+      btn.setAttribute("aria-label", "Preview in " + color.label);
+      btn.addEventListener("click", function () {
+        selectColor(colorKey);
+        Array.prototype.forEach.call(swatchRow.querySelectorAll(".swatch"), function (s) {
+          s.classList.remove("is-selected");
+        });
+        btn.classList.add("is-selected");
+      });
+
+      var name = document.createElement("span");
+      name.className = "swatch-name";
+      name.textContent = color.label;
+
+      item.appendChild(btn);
+      item.appendChild(name);
+      swatchRow.appendChild(item);
+    });
+  }
+
+  function resetToBase() {
+    var style = MAG_COLOR_MAP[currentStyleKey];
+    baseImg.src = style.baseImage;
+    baseImg.alt = style.label + " — bare / uncoated";
+    baseImg.classList.add("is-active");
+    colorImg.classList.remove("is-active");
+    if (previewLabel) {
+      previewLabel.textContent = style.label + " — Bare / Uncoated";
+    }
+  }
+
+  function selectColor(colorKey) {
+    var style = MAG_COLOR_MAP[currentStyleKey];
+    var color = style.colors[colorKey];
+    if (!color) {
+      return;
+    }
+
+    var img = new Image();
+    img.onload = function () {
+      colorImg.src = color.image;
+      colorImg.alt = style.label + " coated in " + color.label;
+      colorImg.classList.add("is-active");
+      baseImg.classList.remove("is-active");
+      if (previewLabel) {
+        previewLabel.textContent = style.label + " — " + color.label;
+      }
+    };
+    img.src = color.image;
+  }
+
+  renderStylePicker();
+  renderSwatches();
+  resetToBase();
+});

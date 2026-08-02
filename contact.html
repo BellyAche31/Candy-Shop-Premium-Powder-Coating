@@ -42,18 +42,28 @@
         </div>
 
         <!--
-          TODO (manual step): replace YOUR_FORM_ID below with the real endpoint
-          from a free Formspree account (https://formspree.io). Create a form
-          there, copy its ID, and paste it into the action URL. Until then this
-          form will not deliver submissions anywhere.
-        -->
-        <form class="form-grid reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="hidden" name="_subject" value="New Quote Request — Candy Shop Powder Coating">
+          Submissions are delivered by FormSubmit (https://formsubmit.co) — no
+          account needed. To send quote requests somewhere else, just change the
+          email at the end of the action URL below.
 
-          <!-- Honeypot spam trap: real users never fill this in -->
+          NOTE: the first time this form is submitted on the live site,
+          FormSubmit emails that address a one-time confirmation link. Until
+          someone clicks it, submissions are not forwarded. See README.md.
+        -->
+        <form class="form-grid reveal" action="https://formsubmit.co/jcg1312003@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Quote Request — Candy Shop Powder Coating">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://bellyache31.github.io/Candy-Shop-Premium-Powder-Coating/thank-you.html">
+
+          <!-- Honeypot spam trap: real users never fill this in. FormSubmit
+               drops any submission where the _honey field has a value.
+               The id/label are deliberately non-semantic — labelling this
+               "Company" would let browser autofill populate it and silently
+               get a real customer's request thrown away. -->
           <div class="honeypot-field" aria-hidden="true">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+            <label for="honeypot">Leave this field empty</label>
+            <input type="text" id="honeypot" name="_honey" tabindex="-1" autocomplete="off">
           </div>
 
           <div class="form-row-2">

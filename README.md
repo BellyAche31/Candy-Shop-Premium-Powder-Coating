@@ -26,25 +26,51 @@ images/            All site images (placeholders — see below)
 | `images/logo/logo.jpg` | Real logo (already in place) |
 | `images/hero/hero.jpg` | Real hero photo (already in place) |
 | `images/gallery/gallery-1.jpg` … `gallery-8.jpg` | Real completed-project photos (already in place) — add more by adding new `<img>` tags in `gallery.html` |
-| `images/mags/style-a/base.svg` | Photo of "Style A" mag before coating |
-| `images/mags/style-a/lemon-yellow.jpg` | Real photo — Style A coated in Lemon Yellow |
-| `images/mags/style-a/fluorescent-pink.jpg` | Real photo — Style A coated in Fluorescent Pink |
-| `images/mags/style-a/*.svg` | Remaining colors for Style A, still placeholders |
-| `images/mags/style-b/*.svg` | Same pattern for a second mag style ("Deep Dish"), still placeholders |
+| `images/mags/style-a/base.svg` | Uncoated "before" mag for the **Candy Powder Coat** finish |
+| `images/mags/style-a/lemon-yellow.jpg` | Real photo — Candy Powder Coat in Lemon Yellow |
+| `images/mags/style-a/fluorescent-pink.jpg` | Real photo — Candy Powder Coat in Fluorescent Pink |
+| `images/mags/style-a/*.svg` | Remaining Candy Powder Coat colors, still placeholders |
+| `images/mags/style-b/*.svg` | Same pattern for the **Ceramic Coating** finish, still placeholders |
 
 If real photos are `.jpg`/`.png` instead of `.svg`, either convert them to those filenames, or update the matching path in `js/color-preview.js` (for mag photos) or the `<img src>` in the relevant HTML file (for logo/hero/gallery). `js/color-preview.js` has a per-color `overrides` object on the `style-a` entry showing exactly how a placeholder `.svg` path gets swapped for a real `.jpg` — copy that pattern for each new real photo.
 
 To add a new mag style or color to the preview tool, add a new entry to the `MAG_COLOR_MAP` object in `js/color-preview.js` following the existing pattern.
 
-## Setting Up the Quote Form (Formspree)
+## The Quote Form (FormSubmit)
 
-The contact form (`contact.html`) posts directly to [Formspree](https://formspree.io) — no backend code required.
+The contact form (`contact.html`) posts directly to [FormSubmit](https://formsubmit.co) — no account, no backend code, unlimited submissions, free. Quote requests are emailed to the address at the end of the form's `action` URL.
 
-1. Create a free Formspree account and a new form.
-2. Copy the form's endpoint ID from the URL Formspree gives you (looks like `https://formspree.io/f/abc123xy`).
-3. In `contact.html`, replace `YOUR_FORM_ID` in the `<form action="...">` attribute with your real ID.
+**Currently delivering to:** `jcg1312003@gmail.com`
 
-The free Formspree plan currently allows a limited number of submissions per month, which is generally enough for a small shop's quote requests — upgrade only if you outgrow it.
+### One-time activation (required)
+
+The first time the form is submitted **on the live site**, FormSubmit emails that address a confirmation link. Until someone clicks it once, submissions are not forwarded. So after deploying:
+
+1. Go to the live Contact page and submit one test request.
+2. Check that inbox for the FormSubmit confirmation email and click the activation link.
+3. Submit once more to confirm it now arrives.
+
+### Changing the destination email
+
+Edit one line in `contact.html` — the email at the end of the `<form action="...">` URL. The new address will need its own one-time activation as above.
+
+### Hiding the email from the page source (recommended)
+
+Once activated, FormSubmit gives you a random alias endpoint (like `https://formsubmit.co/xxxxxxxxxxxx`). Swapping the plain email in the form `action` for that alias keeps the address out of the public HTML so scrapers can't harvest it for spam.
+
+### How it's configured
+
+Hidden fields in the form control FormSubmit's behavior:
+
+| Field | Purpose |
+|---|---|
+| `_subject` | Subject line of the notification email |
+| `_template=table` | Formats the email as a readable table |
+| `_captcha=false` | Skips FormSubmit's captcha screen (a honeypot handles spam instead) |
+| `_next` | Absolute URL of the page shown after submitting (`thank-you.html`) — must be absolute, a relative path won't work |
+| `_honey` | Hidden honeypot field; FormSubmit drops any submission that fills it in |
+
+If you move the site to a different domain, update the `_next` URL in `contact.html` to match.
 
 ## Deploying for Free (GitHub Pages)
 

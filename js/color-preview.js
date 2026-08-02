@@ -37,7 +37,7 @@ function buildColorsForStyle(styleSlug, overrides) {
 
 const MAG_COLOR_MAP = {
   "style-a": {
-    label: "Style A — 5-Spoke Sport",
+    label: "Candy Powder Coat",
     baseImage: "images/mags/style-a/base.svg",
     colors: buildColorsForStyle("style-a", {
       "lemon-yellow": "lemon-yellow.jpg",
@@ -45,7 +45,7 @@ const MAG_COLOR_MAP = {
     })
   },
   "style-b": {
-    label: "Style B — Deep Dish",
+    label: "Ceramic Coating",
     baseImage: "images/mags/style-b/base.svg",
     colors: buildColorsForStyle("style-b")
   }
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     baseImg.classList.add("is-active");
     colorImg.classList.remove("is-active");
     if (previewLabel) {
-      previewLabel.textContent = style.label + " — Bare / Uncoated";
+      previewLabel.textContent = style.label + " — Select a Color";
     }
   }
 

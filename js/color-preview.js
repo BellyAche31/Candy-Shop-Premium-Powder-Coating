@@ -18,7 +18,8 @@ const AVAILABLE_COLORS = [
   { id: "chrome", label: "Chrome", swatchHex: "#C7C9CC" },
   { id: "shocker-goblin", label: "Shocker Goblin", swatchHex: "#6FBE2C" },
   { id: "shocker-red", label: "Shocker Red", swatchHex: "#FF1E1E" },
-  { id: "titanium-black-silver", label: "Titanium Black Silver", swatchHex: "#3A3D40" }
+  { id: "titanium-black-silver", label: "Titanium Black Silver", swatchHex: "#3A3D40" },
+  { id: "24k-gold", label: "24K Gold", swatchHex: "#D4A017" }
 ];
 
 function buildColorsForStyle(styleSlug, overrides) {
@@ -41,7 +42,13 @@ const MAG_COLOR_MAP = {
     baseImage: "images/mags/style-a/base.svg",
     colors: buildColorsForStyle("style-a", {
       "lemon-yellow": "lemon-yellow.jpg",
-      "fluorescent-pink": "fluorescent-pink.jpg"
+      "fluorescent-pink": "fluorescent-pink.jpg",
+      "hi-gloss-white": "hi-gloss-white.jpg",
+      "shocker-violet": "shocker-violet.jpg",
+      "shocker-goblin": "shocker-goblin.jpg",
+      "titanium-black-silver": "titanium-black-silver.jpg",
+      "prismatic-blue": "prismatic-blue.jpg",
+      "24k-gold": "24k-gold.jpg"
     })
   },
   "style-b": {

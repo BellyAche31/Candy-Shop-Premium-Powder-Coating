@@ -83,14 +83,11 @@ img {
   .card-grid .card:nth-child(6) { transition-delay: 450ms; }
   .card-grid .card:nth-child(7) { transition-delay: 540ms; }
 
-  .gallery-grid img:nth-child(1) { transition-delay: 0ms; }
-  .gallery-grid img:nth-child(2) { transition-delay: 70ms; }
-  .gallery-grid img:nth-child(3) { transition-delay: 140ms; }
-  .gallery-grid img:nth-child(4) { transition-delay: 210ms; }
-  .gallery-grid img:nth-child(5) { transition-delay: 280ms; }
-  .gallery-grid img:nth-child(6) { transition-delay: 350ms; }
-  .gallery-grid img:nth-child(7) { transition-delay: 420ms; }
-  .gallery-grid img:nth-child(8) { transition-delay: 490ms; }
+  /* Stagger by column rather than by absolute index, so the cascade stays
+     short and consistent no matter how many photos the gallery grows to. */
+  .gallery-grid img { transition-delay: 0ms; }
+  .gallery-grid img:nth-child(3n + 2) { transition-delay: 90ms; }
+  .gallery-grid img:nth-child(3n + 3) { transition-delay: 180ms; }
 
   .hero-parallax {
     transition: transform 0.1s linear;

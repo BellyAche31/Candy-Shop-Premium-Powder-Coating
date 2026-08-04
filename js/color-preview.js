@@ -19,7 +19,9 @@ const AVAILABLE_COLORS = [
   { id: "shocker-goblin", label: "Shocker Goblin", swatchHex: "#6FBE2C" },
   { id: "shocker-red", label: "Shocker Red", swatchHex: "#FF1E1E" },
   { id: "titanium-black-silver", label: "Titanium Black Silver", swatchHex: "#3A3D40" },
-  { id: "24k-gold", label: "24K Gold", swatchHex: "#D4A017" }
+  { id: "24k-gold", label: "24K Gold", swatchHex: "#D4A017" },
+  { id: "original-orange", label: "Original Orange", swatchHex: "#E8621A" },
+  { id: "mint-green", label: "Mint Green", swatchHex: "#5FD3AE" }
 ];
 
 function buildColorsForStyle(styleSlug, overrides) {
@@ -48,13 +50,19 @@ const MAG_COLOR_MAP = {
       "shocker-goblin": "shocker-goblin.jpg",
       "titanium-black-silver": "titanium-black-silver.jpg",
       "prismatic-blue": "prismatic-blue.jpg",
-      "24k-gold": "24k-gold.jpg"
+      "24k-gold": "24k-gold.jpg",
+      "original-orange": "original-orange.jpg",
+      "mint-green": "mint-green.jpg",
+      "fire-red": "fire-red.jpg"
     })
   },
   "style-b": {
     label: "Ceramic Coating",
     baseImage: "images/mags/style-b/base.svg",
-    colors: buildColorsForStyle("style-b")
+    colors: buildColorsForStyle("style-b", {
+      "prismatic-blue": "prismatic-blue.jpg",
+      "chrome": "chrome.jpg"
+    })
   }
 };
 

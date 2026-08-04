@@ -19,17 +19,18 @@ images/            All site images (placeholders — see below)
 
 ## Replacing Placeholder Images
 
-Most images are now real photos: the logo, the hero shot, all 17 gallery photos, and 8 of the 12 Candy Powder Coat colors. What remains as placeholder artwork is the "bare / uncoated" before-image, the 4 unphotographed Candy Powder Coat colors, and the whole Ceramic Coating finish. To replace one, overwrite the file at its existing path **using the same filename** — no HTML or JS changes needed.
+Most images are now real photos: the logo, the hero shot, all 24 gallery photos, 11 of the 14 Candy Powder Coat colors, and 2 of the 14 Ceramic Coating colors. What remains as placeholder artwork is the "bare / uncoated" before-image and the unphotographed colors in each finish. To replace one, overwrite the file at its existing path **using the same filename** — no HTML or JS changes needed.
 
 | File path | What goes here |
 |---|---|
 | `images/logo/logo.jpg` | Real logo (already in place) |
 | `images/hero/hero.jpg` | Real hero photo (already in place) |
-| `images/gallery/gallery-1.jpg` … `gallery-17.jpg` | Real completed-project photos (already in place) — add more by adding new `<img>` tags in `gallery.html` |
+| `images/gallery/gallery-1.jpg` … `gallery-24.jpg` | Real completed-project photos (already in place) — add more by adding new `<img>` tags in `gallery.html` |
 | `images/mags/style-a/base.svg` | Uncoated "before" mag for the **Candy Powder Coat** finish |
-| `images/mags/style-a/*.jpg` | Real photos — 8 of 12 Candy Powder Coat colors (lemon yellow, fluorescent pink, hi gloss white, shocker violet, shocker goblin, titanium black silver, prismatic blue, 24K gold) |
-| `images/mags/style-a/*.svg` | Remaining 4 Candy Powder Coat colors (fire red, chameleon green, chrome, shocker red), still placeholders |
-| `images/mags/style-b/*.svg` | Same pattern for the **Ceramic Coating** finish, still placeholders |
+| `images/mags/style-a/*.jpg` | Real photos — 11 of 14 Candy Powder Coat colors (lemon yellow, fluorescent pink, hi gloss white, shocker violet, shocker goblin, titanium black silver, prismatic blue, 24K gold, original orange, mint green, fire red) |
+| `images/mags/style-a/*.svg` | Remaining 3 Candy Powder Coat colors (chameleon green, chrome, shocker red), still placeholders |
+| `images/mags/style-b/*.jpg` | Real photos — 2 of 14 Ceramic Coating colors (prismatic blue, chrome) |
+| `images/mags/style-b/*.svg` | Remaining 12 Ceramic Coating colors, still placeholders |
 
 If real photos are `.jpg`/`.png` instead of `.svg`, either convert them to those filenames, or update the matching path in `js/color-preview.js` (for mag photos) or the `<img src>` in the relevant HTML file (for logo/hero/gallery). `js/color-preview.js` has a per-color `overrides` object on the `style-a` entry showing exactly how a placeholder `.svg` path gets swapped for a real `.jpg` — copy that pattern for each new real photo.
 

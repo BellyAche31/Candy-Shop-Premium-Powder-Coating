@@ -4,9 +4,11 @@
 // the "image"/"baseImage" string below), keeping the same style/color keys.
 // To add a new mag style or color, add another entry following the same shape.
 
-// Shared color list — used to build each style's `colors` map below.
-// To add a new color: add it here, then add matching image files at
-// images/mags/<style>/<colorId>.svg for every mag style.
+// Shared color list — the menu each finish draws from.
+// To add a new color: add it here, then add a matching image file at
+// images/mags/<style>/<colorId>.(jpg|svg) for every finish that offers it.
+// A finish does NOT have to offer every color — pass an allow-list as the
+// third argument to buildColorsForStyle() to restrict it (see style-b below).
 const AVAILABLE_COLORS = [
   { id: "fluorescent-pink", label: "Fluorescent Pink", swatchHex: "#FF2FA0" },
   { id: "lemon-yellow", label: "Lemon Yellow", swatchHex: "#FCEE21" },
@@ -24,10 +26,15 @@ const AVAILABLE_COLORS = [
   { id: "mint-green", label: "Mint Green", swatchHex: "#5FD3AE" }
 ];
 
-function buildColorsForStyle(styleSlug, overrides) {
+// onlyIds (optional): restrict this finish to a subset of AVAILABLE_COLORS.
+// Omit it to offer every color.
+function buildColorsForStyle(styleSlug, overrides, onlyIds) {
   overrides = overrides || {};
   var colors = {};
   AVAILABLE_COLORS.forEach(function (color) {
+    if (onlyIds && onlyIds.indexOf(color.id) === -1) {
+      return;
+    }
     var filename = overrides[color.id] || (color.id + ".svg");
     colors[color.id] = {
       label: color.label,
@@ -56,13 +63,16 @@ const MAG_COLOR_MAP = {
       "fire-red": "fire-red.jpg"
     })
   },
+  // Ceramic Coating deliberately offers only the two finishes we have real
+  // photos of, rather than padding the swatch row with placeholder artwork.
+  // Add a color here (and its photo) as more ceramic work gets shot.
   "style-b": {
     label: "Ceramic Coating",
-    baseImage: "images/mags/style-b/base.svg",
+    baseImage: "images/mags/style-b/chrome.jpg",
     colors: buildColorsForStyle("style-b", {
       "prismatic-blue": "prismatic-blue.jpg",
       "chrome": "chrome.jpg"
-    })
+    }, ["prismatic-blue", "chrome"])
   }
 };
 

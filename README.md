@@ -19,7 +19,7 @@ images/            All site images (placeholders — see below)
 
 ## Replacing Placeholder Images
 
-Most images are now real photos: the logo, the hero shot, all 24 gallery photos, 11 of the 14 Candy Powder Coat colors, and 2 of the 14 Ceramic Coating colors. What remains as placeholder artwork is the "bare / uncoated" before-image and the unphotographed colors in each finish. To replace one, overwrite the file at its existing path **using the same filename** — no HTML or JS changes needed.
+Most images are now real photos: the logo, the hero shot, all 24 gallery photos, and 11 of the 14 Candy Powder Coat colors. To replace a remaining placeholder, overwrite the file at its existing path **using the same filename** — no HTML or JS changes needed.
 
 | File path | What goes here |
 |---|---|
@@ -29,8 +29,17 @@ Most images are now real photos: the logo, the hero shot, all 24 gallery photos,
 | `images/mags/style-a/base.svg` | Uncoated "before" mag for the **Candy Powder Coat** finish |
 | `images/mags/style-a/*.jpg` | Real photos — 11 of 14 Candy Powder Coat colors (lemon yellow, fluorescent pink, hi gloss white, shocker violet, shocker goblin, titanium black silver, prismatic blue, 24K gold, original orange, mint green, fire red) |
 | `images/mags/style-a/*.svg` | Remaining 3 Candy Powder Coat colors (chameleon green, chrome, shocker red), still placeholders |
-| `images/mags/style-b/*.jpg` | Real photos — 2 of 14 Ceramic Coating colors (prismatic blue, chrome) |
-| `images/mags/style-b/*.svg` | Remaining 12 Ceramic Coating colors, still placeholders |
+| `images/mags/style-b/*.jpg` | **Ceramic Coating — real photos only.** Currently prismatic blue + chrome |
+
+### Ceramic Coating shows only photographed colors
+
+`AVAILABLE_COLORS` in `js/color-preview.js` is the shared menu, but a finish doesn't have to offer all of it. Ceramic Coating passes an allow-list as the third argument to `buildColorsForStyle()`, so it shows only the two colors we have real photos of instead of padding the swatch row with placeholder artwork:
+
+```js
+colors: buildColorsForStyle("style-b", { ... }, ["prismatic-blue", "chrome"])
+```
+
+To add a ceramic color later: drop the photo at `images/mags/style-b/<color-id>.jpg`, then add that id to both the overrides object and the allow-list.
 
 If real photos are `.jpg`/`.png` instead of `.svg`, either convert them to those filenames, or update the matching path in `js/color-preview.js` (for mag photos) or the `<img src>` in the relevant HTML file (for logo/hero/gallery). `js/color-preview.js` has a per-color `overrides` object on the `style-a` entry showing exactly how a placeholder `.svg` path gets swapped for a real `.jpg` — copy that pattern for each new real photo.
 

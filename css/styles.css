@@ -688,3 +688,380 @@ textarea {
 .mt-2 {
   margin-top: 2rem;
 }
+
+/* ==========================================================================
+   Scroll progress bar
+   ========================================================================== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+  background: transparent;
+  pointer-events: none;
+}
+
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--color-accent-bright), #ff8a3d, var(--color-accent-bright));
+  box-shadow: 0 0 12px rgba(224, 38, 63, 0.7);
+  transition: width 0.1s linear;
+}
+
+/* ==========================================================================
+   Color catalog
+   ========================================================================== */
+
+.color-category {
+  margin-bottom: 3.5rem;
+}
+
+.color-category__head {
+  margin-bottom: 1.5rem;
+}
+
+.color-category__head h2 {
+  margin-bottom: 0.4rem;
+}
+
+.color-category__head h2::after {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.color-category__count {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-bright);
+  border: 1px solid rgba(224, 38, 63, 0.35);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.color-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.color-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: linear-gradient(160deg, var(--color-surface), #191919);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.85rem;
+  box-shadow: var(--shadow-card);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.color-chip:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: rgba(176, 16, 42, 0.45);
+}
+
+.color-chip__dot {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.25),
+              0 3px 8px rgba(0, 0, 0, 0.45);
+}
+
+.color-chip__name {
+  font-size: 0.88rem;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+/* ---------- Color name marquee ---------- */
+
+.color-marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--color-border);
+  background: linear-gradient(90deg, rgba(176, 16, 42, 0.12), transparent 30%, transparent 70%, rgba(10, 63, 160, 0.12));
+  padding-block: 0.8rem;
+  margin-bottom: 2.5rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.color-marquee__track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  white-space: nowrap;
+}
+
+.color-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.color-marquee__item i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .color-marquee__track {
+    animation: marquee-scroll 48s linear infinite;
+  }
+  .color-marquee:hover .color-marquee__track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   Pricing
+   ========================================================================== */
+
+.price-banner {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .price-banner { grid-template-columns: repeat(3, 1fr); }
+}
+
+.price-banner__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.2rem;
+  padding: 1.1rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(224, 38, 63, 0.3);
+  background: linear-gradient(160deg, rgba(224, 38, 63, 0.12), rgba(176, 16, 42, 0.04));
+  box-shadow: var(--shadow-card);
+}
+
+.price-banner__icon {
+  width: 34px;
+  height: 34px;
+  color: var(--color-accent-bright);
+  margin-bottom: 0.3rem;
+}
+
+.price-banner__icon svg { width: 100%; height: 100%; }
+
+.price-banner__item strong {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.price-banner__item span { font-size: 0.85rem; color: var(--color-text-muted); }
+
+.price-block { margin-bottom: 2.75rem; }
+
+.price-block h2 { margin-bottom: 1rem; }
+.price-block h2::after { margin-left: 0; margin-right: 0; }
+
+.table-scroll {
+  position: relative;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  /* Right-edge fade cues that the table scrolls sideways on narrow screens.
+     Pinned to the scroll container so it sits over the clipped edge. */
+  background-image: linear-gradient(90deg, transparent calc(100% - 44px), rgba(12, 12, 12, 0.9));
+  background-repeat: no-repeat;
+  background-attachment: local, scroll;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+  background: linear-gradient(160deg, var(--color-surface), #191919);
+}
+
+.price-table th,
+.price-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.price-table thead th {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-bright);
+  background: rgba(224, 38, 63, 0.08);
+  white-space: nowrap;
+}
+
+.price-table tbody th {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.price-table tbody td {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.price-table tbody tr:last-child th,
+.price-table tbody tr:last-child td { border-bottom: none; }
+
+.price-table tbody tr { transition: background 0.2s ease; }
+.price-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+
+.price-note {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.price-footnote {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.7rem;
+}
+
+/* ==========================================================================
+   Stat counters
+   ========================================================================== */
+
+.stat-row {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .stat-row { grid-template-columns: repeat(4, 1fr); }
+}
+
+.stat {
+  text-align: center;
+  padding: 1.4rem 0.8rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(160deg, var(--color-surface), #191919);
+  box-shadow: var(--shadow-card);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: rgba(176, 16, 42, 0.4);
+}
+
+.stat__num {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4vw + 1rem, 3.1rem);
+  line-height: 1;
+  background: linear-gradient(135deg, #fff, var(--color-accent-bright));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat__label {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Extra reveal variants
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-left,
+  .reveal-right {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-left  { transform: translateX(-40px); }
+  .reveal-right { transform: translateX(40px); }
+  .reveal-left.is-visible,
+  .reveal-right.is-visible { opacity: 1; transform: translateX(0); }
+
+  .reveal-pop {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .reveal-pop.is-visible { opacity: 1; transform: scale(1); }
+
+  /* wave stagger across the swatch grid */
+  .color-grid .color-chip:nth-child(6n + 1) { transition-delay: 0ms; }
+  .color-grid .color-chip:nth-child(6n + 2) { transition-delay: 55ms; }
+  .color-grid .color-chip:nth-child(6n + 3) { transition-delay: 110ms; }
+  .color-grid .color-chip:nth-child(6n + 4) { transition-delay: 165ms; }
+  .color-grid .color-chip:nth-child(6n + 5) { transition-delay: 220ms; }
+  .color-grid .color-chip:nth-child(6n + 6) { transition-delay: 275ms; }
+
+  .stat-row .stat:nth-child(1) { transition-delay: 0ms; }
+  .stat-row .stat:nth-child(2) { transition-delay: 90ms; }
+  .stat-row .stat:nth-child(3) { transition-delay: 180ms; }
+  .stat-row .stat:nth-child(4) { transition-delay: 270ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-left,
+  .reveal-right,
+  .reveal-pop { opacity: 1; transform: none; }
+}

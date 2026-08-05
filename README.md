@@ -5,45 +5,69 @@ A free-to-run static website for a motorcycle mag (wheel) powder-coating busines
 ## Structure
 
 ```
-index.html        Home page
-gallery.html       Gallery + color preview tool
-services.html      Services offered
-about.html         About the business
-contact.html       Quote/booking request form
-404.html           Not-found page
-css/styles.css     All site styling
-js/main.js         Mobile nav toggle, footer year
-js/color-preview.js  Color preview data + crossfade logic
-images/            All site images (placeholders — see below)
+index.html          Home page
+colors.html         Full 59-color catalog (generated — see below)
+gallery.html        Past work + color preview tool
+services.html       Services offered
+pricing.html        Pricelist
+about.html          About the business
+contact.html        Quote/booking request form
+thank-you.html      Post-submit confirmation
+404.html            Not-found page
+css/styles.css      All site styling
+js/main.js          Nav toggle, scroll reveals, progress bar, counters, marquee
+js/color-preview.js Color preview data + crossfade logic
+tools/gen_colors.py Generates the color catalog + quote-form dropdown
+images/             All site images
 ```
 
 ## Replacing Placeholder Images
 
-Most images are now real photos: the logo, the hero shot, all 24 gallery photos, and 11 of the 14 Candy Powder Coat colors. To replace a remaining placeholder, overwrite the file at its existing path **using the same filename** — no HTML or JS changes needed.
+Nearly everything is a real photo now: the logo, the hero shot, all 24 gallery photos, and every color the preview tool offers. To replace one, overwrite the file at its existing path **using the same filename** — no HTML or JS changes needed.
 
 | File path | What goes here |
 |---|---|
-| `images/logo/logo.jpg` | Real logo (already in place) |
-| `images/hero/hero.jpg` | Real hero photo (already in place) |
-| `images/gallery/gallery-1.jpg` … `gallery-24.jpg` | Real completed-project photos (already in place) — add more by adding new `<img>` tags in `gallery.html` |
-| `images/mags/style-a/base.svg` | Uncoated "before" mag for the **Candy Powder Coat** finish |
-| `images/mags/style-a/*.jpg` | Real photos — 11 of 14 Candy Powder Coat colors (lemon yellow, fluorescent pink, hi gloss white, shocker violet, shocker goblin, titanium black silver, prismatic blue, 24K gold, original orange, mint green, fire red) |
-| `images/mags/style-a/*.svg` | Remaining 3 Candy Powder Coat colors (chameleon green, chrome, shocker red), still placeholders |
-| `images/mags/style-b/*.jpg` | **Ceramic Coating — real photos only.** Currently prismatic blue + chrome |
+| `images/logo/logo.jpg` | Real logo |
+| `images/hero/hero.jpg` | Real hero photo |
+| `images/gallery/gallery-1.jpg` … `gallery-24.jpg` | Completed-project photos — add more with new `<img>` tags in `gallery.html` |
+| `images/mags/style-a/base.svg` | Uncoated "before" mag, Candy Powder Coat — the only drawn placeholder left |
+| `images/mags/style-a/*.jpg` | Candy Powder Coat photos: coke red, original orange, lemon yellow, gloss/matte white, marine blue, 24K gold, goblin green, illusion violet, illusion pink, illusion teal green, titanium black silver |
+| `images/mags/style-b/*.jpg` | Ceramic Coating photos: marine blue, chrome silver |
 
-### Ceramic Coating shows only photographed colors
+Filenames match the color id in `js/color-preview.js`, which matches the name on the color chart.
 
-`AVAILABLE_COLORS` in `js/color-preview.js` is the shared menu, but a finish doesn't have to offer all of it. Ceramic Coating passes an allow-list as the third argument to `buildColorsForStyle()`, so it shows only the two colors we have real photos of instead of padding the swatch row with placeholder artwork:
+### The color system
+
+There are **two separate color surfaces**, and they are deliberately different:
+
+| Surface | Shows | Why |
+|---|---|---|
+| `colors.html` | All **59** finishes | The full catalog customers choose from |
+| Color preview on `gallery.html` | Only **photographed** finishes (11 Candy Powder Coat, 2 Ceramic Coating) | The tool swaps real photos — a color with no photo has nothing to show |
+
+Both finishes in the preview tool pass an allow-list as the third argument to `buildColorsForStyle()` in `js/color-preview.js`, so neither ever renders placeholder artwork:
 
 ```js
-colors: buildColorsForStyle("style-b", { ... }, ["prismatic-blue", "chrome"])
+colors: buildColorsForStyle("style-b", { ... }, ["marine-blue", "chrome-silver"])
 ```
 
-To add a ceramic color later: drop the photo at `images/mags/style-b/<color-id>.jpg`, then add that id to both the overrides object and the allow-list.
+**To add a photographed color to the preview tool:** drop the photo at `images/mags/<finish>/<color-id>.jpg`, then add that id to both the overrides object *and* the allow-list.
 
-If real photos are `.jpg`/`.png` instead of `.svg`, either convert them to those filenames, or update the matching path in `js/color-preview.js` (for mag photos) or the `<img src>` in the relevant HTML file (for logo/hero/gallery). `js/color-preview.js` has a per-color `overrides` object on the `style-a` entry showing exactly how a placeholder `.svg` path gets swapped for a real `.jpg` — copy that pattern for each new real photo.
+### Regenerating the color catalog
 
-To add a new mag style or color to the preview tool, add a new entry to the `MAG_COLOR_MAP` object in `js/color-preview.js` following the existing pattern.
+The 59 colors appear in two places — the swatch grid on `colors.html` and the Desired Color dropdown on `contact.html`. Both are generated from one source so they can't drift:
+
+```
+python3 tools/gen_colors.py
+```
+
+That writes `tools/out/colors_sections.html` and `tools/out/contact_options.html`; paste each into the matching page. Edit the `CATALOG` list in `tools/gen_colors.py` to add or rename a color. Color-shifting finishes (chrome, chameleon, prism) take a *list* of hex values and render as a gradient rather than a flat dot.
+
+**Note:** swatch hex values are visual approximations of real powder, not exact matches — the page says so.
+
+## Pricing
+
+`pricing.html` is hand-maintained HTML tables in Philippine pesos, mirroring the shop's pricelist graphic. Update the numbers directly in that file.
 
 ## The Quote Form (FormSubmit)
 

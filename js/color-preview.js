@@ -10,20 +10,18 @@
 // A finish does NOT have to offer every color — pass an allow-list as the
 // third argument to buildColorsForStyle() to restrict it (see style-b below).
 const AVAILABLE_COLORS = [
-  { id: "fluorescent-pink", label: "Fluorescent Pink", swatchHex: "#FF2FA0" },
-  { id: "lemon-yellow", label: "Lemon Yellow", swatchHex: "#FCEE21" },
-  { id: "hi-gloss-white", label: "Hi Gloss White", swatchHex: "#FFFFFF" },
-  { id: "fire-red", label: "Fire Red", swatchHex: "#E1261C" },
-  { id: "prismatic-blue", label: "Prismatic Blue", swatchHex: "#1477D6" },
-  { id: "chameleon-green", label: "Chameleon Green", swatchHex: "#1FA37A" },
-  { id: "shocker-violet", label: "Shocker Violet", swatchHex: "#7B2FBE" },
-  { id: "chrome", label: "Chrome", swatchHex: "#C7C9CC" },
-  { id: "shocker-goblin", label: "Shocker Goblin", swatchHex: "#6FBE2C" },
-  { id: "shocker-red", label: "Shocker Red", swatchHex: "#FF1E1E" },
-  { id: "titanium-black-silver", label: "Titanium Black Silver", swatchHex: "#3A3D40" },
-  { id: "24k-gold", label: "24K Gold", swatchHex: "#D4A017" },
-  { id: "original-orange", label: "Original Orange", swatchHex: "#E8621A" },
-  { id: "mint-green", label: "Mint Green", swatchHex: "#5FD3AE" }
+  { id: "coke-red", label: "Coke Red", swatchHex: "#c8102e" },
+  { id: "original-orange", label: "Original Orange", swatchHex: "#e8621a" },
+  { id: "lemon-yellow", label: "Lemon Yellow", swatchHex: "#fcee21" },
+  { id: "gloss-matte-white", label: "Gloss / Matte White", swatchHex: "#f2f2f2" },
+  { id: "marine-blue", label: "Marine Blue", swatchHex: "#1b4f9c" },
+  { id: "24k-gold", label: "24K Gold", swatchHex: "#d4a017" },
+  { id: "goblin-green", label: "Goblin Green", swatchHex: "#6fbe2c" },
+  { id: "illusion-violet", label: "Illusion Violet", swatchHex: "#8a3fd1" },
+  { id: "illusion-pink", label: "Illusion Pink", swatchHex: "#e8398b" },
+  { id: "illusion-teal-green", label: "Illusion Teal Green", swatchHex: "#2fa89a" },
+  { id: "titanium-black-silver", label: "Titanium Black Silver", swatchHex: "#3a3d40" },
+  { id: "chrome-silver", label: "Chrome Silver", swatchHex: "#c7c9cc" }
 ];
 
 // onlyIds (optional): restrict this finish to a subset of AVAILABLE_COLORS.
@@ -46,33 +44,36 @@ function buildColorsForStyle(styleSlug, overrides, onlyIds) {
 }
 
 const MAG_COLOR_MAP = {
+  // Both finishes list only colors we have real photos of. The full 59-color
+  // catalog lives on colors.html; this tool is the photographed subset.
   "style-a": {
     label: "Candy Powder Coat",
     baseImage: "images/mags/style-a/base.svg",
     colors: buildColorsForStyle("style-a", {
-      "lemon-yellow": "lemon-yellow.jpg",
-      "fluorescent-pink": "fluorescent-pink.jpg",
-      "hi-gloss-white": "hi-gloss-white.jpg",
-      "shocker-violet": "shocker-violet.jpg",
-      "shocker-goblin": "shocker-goblin.jpg",
-      "titanium-black-silver": "titanium-black-silver.jpg",
-      "prismatic-blue": "prismatic-blue.jpg",
-      "24k-gold": "24k-gold.jpg",
+      "coke-red": "coke-red.jpg",
       "original-orange": "original-orange.jpg",
-      "mint-green": "mint-green.jpg",
-      "fire-red": "fire-red.jpg"
-    })
+      "lemon-yellow": "lemon-yellow.jpg",
+      "gloss-matte-white": "gloss-matte-white.jpg",
+      "marine-blue": "marine-blue.jpg",
+      "24k-gold": "24k-gold.jpg",
+      "goblin-green": "goblin-green.jpg",
+      "illusion-violet": "illusion-violet.jpg",
+      "illusion-pink": "illusion-pink.jpg",
+      "illusion-teal-green": "illusion-teal-green.jpg",
+      "titanium-black-silver": "titanium-black-silver.jpg"
+    }, [
+      "coke-red", "original-orange", "lemon-yellow", "gloss-matte-white",
+      "marine-blue", "24k-gold", "goblin-green", "illusion-violet",
+      "illusion-pink", "illusion-teal-green", "titanium-black-silver"
+    ])
   },
-  // Ceramic Coating deliberately offers only the two finishes we have real
-  // photos of, rather than padding the swatch row with placeholder artwork.
-  // Add a color here (and its photo) as more ceramic work gets shot.
   "style-b": {
     label: "Ceramic Coating",
-    baseImage: "images/mags/style-b/chrome.jpg",
+    baseImage: "images/mags/style-b/chrome-silver.jpg",
     colors: buildColorsForStyle("style-b", {
-      "prismatic-blue": "prismatic-blue.jpg",
-      "chrome": "chrome.jpg"
-    }, ["prismatic-blue", "chrome"])
+      "marine-blue": "marine-blue.jpg",
+      "chrome-silver": "chrome-silver.jpg"
+    }, ["marine-blue", "chrome-silver"])
   }
 };
 

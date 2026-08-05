@@ -13,6 +13,8 @@
 </head>
 <body>
 
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
   <header class="site-header">
     <div class="container">
       <a class="logo-link" href="index.html">
@@ -23,8 +25,10 @@
       </button>
       <nav class="main-nav">
         <a href="index.html">Home</a>
+        <a href="colors.html">Colors</a>
         <a href="gallery.html">Gallery</a>
         <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="contact.html" class="is-current">Get a Quote</a>
       </nav>
@@ -97,23 +101,78 @@
             <label for="desired-color">Desired Color</label>
             <select id="desired-color" name="desired_color">
               <option value="">Select a color (optional)</option>
-              <option value="fluorescent-pink">Fluorescent Pink</option>
-              <option value="lemon-yellow">Lemon Yellow</option>
-              <option value="hi-gloss-white">Hi Gloss White</option>
-              <option value="fire-red">Fire Red</option>
-              <option value="prismatic-blue">Prismatic Blue</option>
-              <option value="chameleon-green">Chameleon Green</option>
-              <option value="shocker-violet">Shocker Violet</option>
-              <option value="chrome">Chrome</option>
-              <option value="shocker-goblin">Shocker Goblin</option>
-              <option value="shocker-red">Shocker Red</option>
-              <option value="titanium-black-silver">Titanium Black Silver</option>
-              <option value="24k-gold">24K Gold</option>
+            <optgroup label="Standard Colors">
+              <option value="gloss-matte-black">Gloss / Matte Black</option>
+              <option value="gloss-matte-white">Gloss / Matte White</option>
+              <option value="pearl-white">Pearl White</option>
+              <option value="textured-black">Textured Black</option>
+              <option value="sahara-black">Sahara Black</option>
+              <option value="wrinkle-black">Wrinkle Black</option>
+              <option value="velvet-green">Velvet Green</option>
+              <option value="coke-red">Coke Red</option>
               <option value="original-orange">Original Orange</option>
-              <option value="mint-green">Mint Green</option>
+              <option value="lemon-yellow">Lemon Yellow</option>
+              <option value="marine-blue">Marine Blue</option>
+              <option value="aqua-marine-blue">Aqua Marine Blue</option>
+              <option value="bubblegum-blue">Bubblegum Blue</option>
+              <option value="soul-white">Soul White</option>
+              <option value="spirit-white">Spirit White</option>
+            </optgroup>
+            <optgroup label="Chrome Edition">
+              <option value="chrome-silver">Chrome Silver</option>
+              <option value="chrome-red">Chrome Red</option>
+              <option value="chrome-blue">Chrome Blue</option>
+              <option value="chrome-yellow">Chrome Yellow</option>
+              <option value="chrome-copper">Chrome Copper</option>
+              <option value="chrome-pink">Chrome Pink</option>
+              <option value="chrome-green">Chrome Green</option>
+              <option value="chrome-gold">Chrome Gold</option>
+              <option value="chrome-magenta-purple">Chrome Magenta Purple</option>
+              <option value="chrome-cherry">Chrome Cherry</option>
+              <option value="chrome-purple">Chrome Purple</option>
+            </optgroup>
+            <optgroup label="Premium Colors">
+              <option value="illusion-red">Illusion Red</option>
+              <option value="illusion-blue">Illusion Blue</option>
+              <option value="24k-gold">24K Gold</option>
+              <option value="shocker-green">Shocker Green</option>
+              <option value="shocker-yellow-green">Shocker Yellow Green</option>
+              <option value="illusion-violet">Illusion Violet</option>
+              <option value="illusion-purple">Illusion Purple</option>
+              <option value="goblin-green">Goblin Green</option>
+              <option value="illusion-pink">Illusion Pink</option>
+              <option value="illusion-berry-pink">Illusion Berry Pink</option>
+              <option value="illusion-chrome-black">Illusion Chrome Black</option>
+              <option value="titanium-black-silver">Titanium Black Silver</option>
+              <option value="malaysian-blue">Malaysian Blue</option>
+              <option value="deep-purple">Deep Purple</option>
+              <option value="champagne-gold">Champagne Gold</option>
+              <option value="rose-gold">Rose Gold</option>
+              <option value="illusion-teal-green">Illusion Teal Green</option>
+              <option value="illusion-copper">Illusion Copper</option>
+              <option value="illusion-lake-green">Illusion Lake Green</option>
+              <option value="sparkling-blue">Sparkling Blue</option>
+            </optgroup>
+            <optgroup label="Metallic Colors">
+              <option value="gold-metallic">Gold Metallic</option>
+              <option value="metallic-dark-bronze">Metallic Dark Bronze</option>
+              <option value="metallic-light-bronze">Metallic Light Bronze</option>
+              <option value="electro-silver">Electro Silver</option>
+              <option value="alloy-silver">Alloy Silver</option>
+              <option value="metallic-green">Metallic Green</option>
+            </optgroup>
+            <optgroup label="Chameleon Edition">
+              <option value="chameleon-pearl-white-gold">Chameleon Pearl White (Gold)</option>
+              <option value="chameleon-pearl-white-silver">Chameleon Pearl White (Silver)</option>
+              <option value="chameleon-blue">Chameleon Blue</option>
+              <option value="prism-blue">Prism Blue</option>
+              <option value="prism-green">Prism Green</option>
+              <option value="prism-violet">Prism Violet</option>
+              <option value="chameleon-blue-violet">Chameleon Blue Violet</option>
+            </optgroup>
               <option value="custom">Custom / Not Sure Yet</option>
             </select>
-            <p class="field-hint">Not sure? Try our <a href="gallery.html">color preview tool</a> first.</p>
+            <p class="field-hint">All 59 finishes are on the <a href="colors.html">colors page</a>, and you can preview photographed ones in the <a href="gallery.html">color preview tool</a>.</p>
           </div>
 
           <div>
